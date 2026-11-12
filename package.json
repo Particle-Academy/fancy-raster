@@ -1,0 +1,70 @@
+{
+  "name": "@particle-academy/fancy-raster",
+  "version": "0.0.0",
+  "description": "Tiled raster graphics engine for Particle Academy: Web Mercator math, camera, tile pyramid, prioritised cache and a 2D to 3D renderer path. fancy-map's default engine. Zero runtime dependencies, no React.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Particle-Academy/fancy-raster.git"
+  },
+  "homepage": "https://github.com/Particle-Academy/fancy-raster#readme",
+  "bugs": "https://github.com/Particle-Academy/fancy-raster/issues",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "clean": "rm -rf dist",
+    "prepublishOnly": "tsup"
+  },
+  "keywords": [
+    "map",
+    "tiles",
+    "raster",
+    "web-mercator",
+    "slippy-map",
+    "canvas",
+    "webgl",
+    "3d",
+    "fancy"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.19.21",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.0",
+    "vitest": "^4.1.12"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "overrides": {
+    "esbuild": "^0.28.1",
+    "source-map-js": "^1.2.2"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

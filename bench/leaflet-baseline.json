@@ -1,0 +1,109 @@
+{
+  "measured": "2026-11-12T02:09:33.726Z",
+  "subject": "Leaflet 1.9.4",
+  "browser": "playwright chromium 151.0.7922.34 (headless)",
+  "machine": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+    "cores": 16
+  },
+  "viewport": "1280x800 @ DPR 2",
+  "fixture": "one static 256 px PNG served for every /tiles/{z}/{x}/{y}.png (the flabs kit-site fixture)",
+  "caveat": "Software-rendered headless shell: a regression baseline on this machine, not a device claim. Leaflet exposes no engine time.",
+  "runs": [
+    {
+      "run": 1,
+      "firstLoadMs": 75,
+      "initialTiles": 30,
+      "phases": {
+        "drag": {
+          "frames": 211,
+          "intervalMs": {
+            "p50": 16.7,
+            "p95": 16.7,
+            "p99": 16.8,
+            "max": 16.8
+          },
+          "longTasks": 0,
+          "longTaskMaxMs": 0,
+          "tileRequests": 10
+        },
+        "wheel": {
+          "frames": 219,
+          "intervalMs": {
+            "p50": 16.7,
+            "p95": 33.3,
+            "p99": 33.4,
+            "max": 33.4
+          },
+          "longTasks": 0,
+          "longTaskMaxMs": 0,
+          "tileRequests": 96
+        }
+      }
+    },
+    {
+      "run": 2,
+      "firstLoadMs": 65,
+      "initialTiles": 30,
+      "phases": {
+        "drag": {
+          "frames": 211,
+          "intervalMs": {
+            "p50": 16.7,
+            "p95": 16.8,
+            "p99": 16.8,
+            "max": 16.8
+          },
+          "longTasks": 0,
+          "longTaskMaxMs": 0,
+          "tileRequests": 10
+        },
+        "wheel": {
+          "frames": 209,
+          "intervalMs": {
+            "p50": 16.7,
+            "p95": 33.3,
+            "p99": 33.4,
+            "max": 33.5
+          },
+          "longTasks": 0,
+          "longTaskMaxMs": 0,
+          "tileRequests": 96
+        }
+      }
+    },
+    {
+      "run": 3,
+      "firstLoadMs": 66,
+      "initialTiles": 30,
+      "phases": {
+        "drag": {
+          "frames": 212,
+          "intervalMs": {
+            "p50": 16.7,
+            "p95": 16.8,
+            "p99": 16.8,
+            "max": 16.8
+          },
+          "longTasks": 0,
+          "longTaskMaxMs": 0,
+          "tileRequests": 10
+        },
+        "wheel": {
+          "frames": 209,
+          "intervalMs": {
+            "p50": 16.7,
+            "p95": 33.4,
+            "p99": 33.4,
+            "max": 33.4
+          },
+          "longTasks": 0,
+          "longTaskMaxMs": 0,
+          "tileRequests": 96
+        }
+      }
+    }
+  ]
+}
