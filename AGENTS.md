@@ -1,27 +1,46 @@
-# fancy-raster code map
+# Using @particle-academy/fancy-raster — guide for agents
 
-Tiled raster graphics engine. Pure TypeScript, **zero runtime dependencies, no React**. Design:
-`.ai/plans/fancy-raster-map-engine.md` in the fancy.agi envelope (process rules live there too,
-in `RULES.md`; this file only describes this repo's code).
+How an agent installs and uses this package in a consumer app. What the package
+is, is in [README.md](./README.md). Notes for working ON this repo's code are in
+[CONTRIBUTING.md](./CONTRIBUTING.md).
 
-## Where things are
+## Status first
 
-- `src/index.ts`: the core barrel. Phase 0 exports only the Mercator math.
-- `src/mercator.ts`: spherical Web Mercator in world pixels (`tileSize * 2^zoom`, origin
-  north-west, y south). `lngLatToTile` clamps into the pyramid and refuses a fractional zoom.
-- `scripts/size.mjs`: the one way this repo weighs JavaScript (zlib default level, per-file gzip
-  summed over the static-import closure; dynamic imports are lazy and not counted). Also a CLI.
-- `test/size-budget.test.ts`: the budgets. Builds with the package's own `tsup.config.ts` into a
-  temp dir, ESM, unminified.
-- `bench/leaflet-baseline.mjs` + `.json`: the Phase 0 Leaflet frame baseline. Not published.
+**0.0.x, Phase 0: only the Web Mercator math exists.** There is no renderer, so
+this is not a usable map. Do not depend on it in a consumer app; for a map today
+use `@particle-academy/fancy-map`.
 
-## Invariants a change must keep
+## Install
 
-- **No entry in `dependencies` or `peerDependencies`.** `test/packaging.test.ts` checks.
-- **Every tsup entry is in a budget.** Adding a subpath means adding it to `tsup.config.ts`,
-  `package.json` `exports`, and a `BUDGETS` row, or `size-budget.test.ts` fails.
-- **Budgets are measured unminified.** Do not switch on `minify` to make a budget pass: it would
-  change what is measured, not what is shipped to a consumer's bundler.
-- **A budget whose entries do not exist is `it.todo`, never a pass.**
-- The core must stay renderer-free: renderers consume a plain-data frame and never decide which
-  tiles to fetch (plan section 3).
+Not on npm yet. Once it is published:
+
+```bash
+npm install @particle-academy/fancy-raster
+```
+
+- **Node:** `>=22`. Zero runtime dependencies and no React.
+
+## Find it on the Fancy MCP server
+
+The catalog server is `https://ui.particle.academy/mcp` (streamable HTTP, no API
+key; MCP id `fancy-ui`). This package is not listed there yet; it appears once
+released. Look for it later with `search-components`.
+
+## API essentials
+
+The core entry exports the Mercator math:
+
+```ts
+import { lngLatToWorld, worldToLngLat, lngLatToTile } from "@particle-academy/fancy-raster";
+
+lngLatToTile({ lng: -0.1276, lat: 51.5072 }, 10); // { z: 10, x: 511, y: 340 }
+lngLatToWorld({ lng: 0, lat: 0 }, 0);              // { x: 128, y: 128 }
+```
+
+World pixels are `tileSize * 2^zoom`, origin north-west, y growing south.
+
+## Traps
+
+- **`lngLatToTile` refuses a fractional zoom** and clamps into the tile pyramid.
+- The planned subpaths (`/canvas2d`, `/webgl`, `/overlay`, `/fancy-3d`) do not
+  exist yet.

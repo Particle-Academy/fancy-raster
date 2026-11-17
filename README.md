@@ -11,6 +11,13 @@ plugs into [`fancy-3d`](https://github.com/Particle-Academy/fancy-3d) scenes.
 > **Status: 0.0.x, Phase 0.** Only the Web Mercator math exists today. There is
 > no renderer yet, so this is not a usable map. Do not depend on it.
 
+<!-- fancy-agents-note:start -->
+> **For agents.** This package is not listed on the Fancy MCP catalog server
+> yet. The server, `https://ui.particle.academy/mcp` (streamable HTTP, no API key; MCP id
+> `fancy-ui`), lists the released Fancy packages with install commands and
+> docs. How an agent installs and uses this package is in [AGENTS.md](https://github.com/Particle-Academy/fancy-raster/blob/main/AGENTS.md).
+<!-- fancy-agents-note:end -->
+
 ## Why
 
 Speed and weight. The default 2D map (core + Canvas2D renderer + markers and
@@ -38,15 +45,6 @@ import { lngLatToWorld, worldToLngLat, lngLatToTile } from "@particle-academy/fa
 
 lngLatToTile({ lng: -0.1276, lat: 51.5072 }, 10); // { z: 10, x: 511, y: 340 }
 lngLatToWorld({ lng: 0, lat: 0 }, 0);              // { x: 128, y: 128 }
-```
-
-## Size
-
-`npm test` builds the package and weighs it. Read the rules at the top of
-`test/size-budget.test.ts`. To weigh anything else the same way:
-
-```bash
-node scripts/size.mjs path/to/file.js
 ```
 
 ## License
