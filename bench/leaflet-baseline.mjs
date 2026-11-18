@@ -10,8 +10,10 @@
 // Node built-ins only; nothing here is a dependency of the package and nothing is
 // published (bench/ is not in `files`). Leaflet is read from wherever it is
 // already installed, never downloaded. The browser is whatever Playwright build
-// is installed (in this estate: the prism-browser sidecar's Playwright 1.62.1
-// and its one build, chromium_headless_shell-1234), headless.
+// is installed (in this estate: the Playwright the fancy.agi envelope pins in
+// .ai/tools/playwright-version, with the browsers Genie hosts at
+// PLAYWRIGHT_BROWSERS_PATH), headless. The browser that produced a baseline is
+// recorded in the JSON it writes; the committed one was Chromium 151 (1.62.1).
 //
 // What it measures, at 1280x800 and DPR 2, after the first tiles have loaded:
 //   drag  -- a 600 px pan over 60 pointer moves (~1 s), then 1.5 s of inertia;
